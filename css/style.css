@@ -1,0 +1,176 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffc954;
+}
+.form-group {
+  margin-right: 10px;
+}
+.form-group input {
+  padding: 5px;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 3px solid #333;
+  padding: 10px;
+}
+.login button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+#buylist {
+  padding: 20px;
+  border: 3px solid #333;
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+}
+#buylist #inputName:focus,
+#buylist #inputPrice:focus,
+#buylist #inputSale:focus {
+  outline: 3px solid #f24;
+}
+#buylist h1 {
+  margin: 0;
+  text-align: center;
+  border: 3px solid #333;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+#buylist .addList {
+  display: flex;
+  border: 3px solid #333;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#buylist .addList.control {
+  padding: 20px;
+}
+
+#buylist .addList .add {
+  border: 3px solid #333;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+#buylist .addList .add:hover {
+  background-color: #ff2244;
+  color: #f3f3f3;
+}
+#buylist .addList .price,
+#buylist .addList .del_btn {
+  display: inline-block;
+  padding: 2px 5px;
+}
+.list .del_btn {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.list .del_btn:hover {
+  background-color: #ff2244;
+  color: #fff;
+}
+#buylist .addList .price {
+  right: 70px;
+  background-color: #ffc954;
+}
+
+#buylist .addList .del_btn {
+  right: 30px;
+  border: 2px solid #333;
+  padding: 0 6px;
+  cursor: pointer;
+}
+#buylist .addList .del_btn:hover {
+  background-color: #ff2244;
+  color: #f3ff3f;
+}
+
+.item input {
+  position: absolute;
+  opacity: 0;
+}
+
+.item label {
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.item label::before {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: #333;
+  vertical-align: top;
+  border-radius: 100px;
+  margin-right: 5px;
+}
+
+.item label::after {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 20px;
+  height: 20px;
+  background-color: #ffc954;
+  border-radius: 50%;
+}
+
+.item :checked + label::before {
+  background-color: #55efc4;
+}
+
+.item :checked + label::after {
+  background-color: #ffc954;
+  left: 20px;
+}
+.list {
+  width: 100%;
+  text-align: left;
+  border: 3px solid #000;
+  border-radius: 5px 5px 0 0;
+  border-spacing: 50px 20px;
+}
+.total {
+  padding: 10px;
+  text-align: right;
+}
+.footer {
+  display: flex;
+  background-color: #ffc954;
+  justify-content: space-around;
+  align-items: center;
+}
+.footer .delAll {
+  border: 1px solid #000;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #ff2244;
+  color: #fff;
+}
+.footer .delAll:hover {
+  background-color: #fff;
+  color: #ff2244;
+}
