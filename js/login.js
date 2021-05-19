@@ -4,7 +4,6 @@ const form = document.querySelector('#form');
 
 function login(event) {
   event.preventDefault();
-  window.location = 'product.html';
   // 以下為示範程式碼
   const url = 'https://vue3-course-api.hexschool.io';
   const path = 'youting';
