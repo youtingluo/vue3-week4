@@ -1,7 +1,9 @@
 import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.9/vue.esm-browser.js';
 let productModal = null;
 let delProductModal = null;
-const app = {
+import pagination from './pagination.js';
+const app = createApp({
+  components: { pagination },
   data() {
     return {
       url: 'https://vue3-course-api.hexschool.io',
@@ -10,7 +12,8 @@ const app = {
       tempProduct: {
         imagesUrl: [],
       },
-      isNew: true,
+      pagination: {},
+      isNew: false,
     };
   },
   methods: {
@@ -84,12 +87,14 @@ const app = {
       }
     },
     // 取得產品
-    getProducts() {
+    getProducts(page = 1) {
       axios
-        .get(`${this.url}/api/${this.path}/admin/products`)
+        .get(`${this.url}/api/${this.path}/admin/products/?page=${page}`)
         .then((res) => {
           if (res.data.success) {
+            console.log(res.data);
             this.products = res.data.products;
+            this.pagination = res.data.pagination;
           } else {
             alert(res.data.message);
           }
@@ -120,5 +125,6 @@ const app = {
     // 執行取得產品
     this.getProducts();
   },
-};
-createApp(app).mount('#app');
+});
+
+app.mount('#app');

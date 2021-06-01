@@ -62,6 +62,8 @@
             </tr>
           </tbody>
         </table>
+        <!-- 分頁 -->
+        <pagination :page="pagination" @get-page="getProducts"></pagination>
       </div>
       <!-- Modal -->
       <!-- 新增編輯產品 -->
@@ -256,6 +258,7 @@
           </div>
         </div>
       </div>
+
       <!-- 刪除產品 -->
       <div
         id="delProductModal"
@@ -316,7 +319,6 @@
       integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
       crossorigin="anonymous"
     ></script>
-    <script src="https://unpkg.com/vue@next"></script>
     <script src="./js/all.js" type="module"></script>
   </body>
 </html>
