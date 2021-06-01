@@ -15,7 +15,7 @@ const app = createApp({
     };
   },
   methods: {
-    // 新增或編輯產品 (接收子元件資料)
+    // 新增或編輯產品
     updateProduct(tempProduct) {
       // 預設是新增 api,方法為 post
       let api = `${this.url}/api/${this.path}/admin/product`;
@@ -124,6 +124,12 @@ const app = createApp({
   },
 });
 app.component('productModal', {
+  data() {
+    return {
+      url: 'https://vue3-course-api.hexschool.io',
+      path: 'youting',
+    };
+  },
   props: ['isNew', 'product'],
   template: `<div
   id="productModal"
@@ -158,42 +164,13 @@ app.component('productModal', {
                 placeholder="請輸入圖片連結"
                 v-model="product.imageUrl"
               />
-              <img class="img-fluid" :src="product.imageUrl" />
+              <img class="img-fluid mt-3" :src="product.imageUrl" />
             </div>
-            <!-- <div class="mb-1">多圖新增</div>
             <div>
-              <div class="mb-1">
-                <div class="form-group">
-                  <label for="imageUrl">圖片網址</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="請輸入圖片連結"
-                  />
-                </div>
-                <img class="img-fluid" />
-              </div>
-              <div>
-                <button
-                  class="btn btn-outline-primary btn-sm d-block w-100"
-                >
-                  新增圖片
-                </button>
-              </div>
-              <div>
-                <button
-                  class="btn btn-outline-danger btn-sm d-block w-100"
-                >
-                  刪除圖片
-                </button>
-              </div>
-            </div> -->
-            <div>
-              <button
-                class="btn btn-outline-primary btn-sm d-block w-100"
-              >
-                新增圖片
-              </button>
+            <label class="btn btn-outline-primary btn-sm d-block w-100 mt-3">
+            <input id="upload_img" style="display:none;" type="file" @change="uploadImg">
+            上傳圖片
+            </label>
             </div>
           </div>
           <div class="col-sm-8">
@@ -316,6 +293,19 @@ app.component('productModal', {
     </div>
   </div>
 </div>`,
+  methods: {
+    uploadImg(e) {
+      console.dir(e);
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append('file-to-upload', file);
+      axios
+        .post(`${this.url}/api/${this.path}/admin/upload`, formData)
+        .then((res) => {
+          this.product.imageUrl = res.data.imageUrl;
+        });
+    },
+  },
 });
 app.component('deleteModal', {
   props: ['product'],
